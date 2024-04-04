@@ -16,3 +16,18 @@ Content-Type: application/json
     "descricao" : "Alimento",
     "valor" : 15
 }
+
+
+### Remoção de Produtos
+POST http://localhost:5124/produto/deletar/d7a8bb32-1b2c-4966-accf-94388808ead0
+
+
+### Alterar produto
+POST http://localhost:5124/produto/alterar/864c4b4d-366e-4a6b-b01e-26350486482e
+Content-Type: application/json
+
+{
+    "nome" : "Arroz Alterado",
+    "descricao" : "Alimento",
+    "valor" : 15
+}

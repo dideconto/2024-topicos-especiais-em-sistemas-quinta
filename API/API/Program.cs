@@ -45,11 +45,32 @@ app.MapPost("/produto/cadastrar", ([FromBody] Produto produto) =>
     return Results.Created("", produto);
 });
 
-//EXERCÍCIOS
-//1) Cadastrar um produto 
-//a) Pela URL
-//b) Pelo corpo
-//2) Remoção do produto
-//3) Alteração do produto
+// DELETE: http://localhost:5124/produto/deletar/id
+app.MapPost("/produto/deletar/{id}", ([FromRoute] string id) =>
+{
+    Produto? produto = produtos.FirstOrDefault(x => x.Id == id);
+    if (produto is null)
+    {
+        return Results.NotFound("Produto não encontrado!");
+    }
+    produtos.Remove(produto);
+    return Results.Ok("Produto deletado!");
 
+});
+
+// PUT: http://localhost:5124/produto/alterar/id
+app.MapPost("/produto/alterar/{id}", ([FromRoute] string id,
+    [FromBody] Produto produtoAlterado) =>
+{
+    Produto? produto = produtos.FirstOrDefault(x => x.Id == id);
+    if (produto is null)
+    {
+        return Results.NotFound("Produto não encontrado!");
+    }
+    produto.Nome = produtoAlterado.Nome;
+    produto.Descricao = produtoAlterado.Descricao;
+    produto.Valor = produtoAlterado.Valor;
+    return Results.Ok("Produto alterado!");
+
+});
 app.Run();
