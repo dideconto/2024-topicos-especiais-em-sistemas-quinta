@@ -5,7 +5,7 @@ GET http://localhost:5124/
 GET http://localhost:5124/produto/listar
 
 ### Busca de Produtos por nome
-GET http://localhost:5124/produto/buscar/1Celular
+GET http://localhost:5124/produto/buscar/Televisão
 
 ### Cadastro de Produtos
-POST http://localhost:5124/produto/cadastrar
+POST http://localhost:5124/produto/cadastrar/arroz/alimento/10
