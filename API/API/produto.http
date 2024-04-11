@@ -8,7 +8,7 @@ GET http://localhost:5124/produto/listar
 GET http://localhost:5124/produto/buscar/Televisão
 
 ### Cadastro de Produtos
-POST http://localhost:5124/produto/cadastrar
+PUT http://localhost:5124/produto/cadastrar
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 
 ### Remoção de Produtos
-POST http://localhost:5124/produto/deletar/d7a8bb32-1b2c-4966-accf-94388808ead0
+DELETE http://localhost:5124/produto/deletar/d7a8bb32-1b2c-4966-accf-94388808ead0
 
 
 ### Alterar produto

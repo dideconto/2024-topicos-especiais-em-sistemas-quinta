@@ -46,7 +46,7 @@ app.MapPost("/produto/cadastrar", ([FromBody] Produto produto) =>
 });
 
 // DELETE: http://localhost:5124/produto/deletar/id
-app.MapPost("/produto/deletar/{id}", ([FromRoute] string id) =>
+app.MapDelete("/produto/deletar/{id}", ([FromRoute] string id) =>
 {
     Produto? produto = produtos.FirstOrDefault(x => x.Id == id);
     if (produto is null)
@@ -59,7 +59,7 @@ app.MapPost("/produto/deletar/{id}", ([FromRoute] string id) =>
 });
 
 // PUT: http://localhost:5124/produto/alterar/id
-app.MapPost("/produto/alterar/{id}", ([FromRoute] string id,
+app.MapPut("/produto/alterar/{id}", ([FromRoute] string id,
     [FromBody] Produto produtoAlterado) =>
 {
     Produto? produto = produtos.FirstOrDefault(x => x.Id == id);
