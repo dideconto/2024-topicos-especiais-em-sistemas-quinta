@@ -24,4 +24,5 @@ public class Produto
     public string? Descricao { get; set; }
     public double Valor { get; set; }
     public DateTime CriadoEm { get; set; }
+    public int Quantidade { get; set; }
 }
