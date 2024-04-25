@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,10 +49,25 @@ app.MapGet("/produto/buscar/{id}", ([FromRoute] string id,
 app.MapPost("/produto/cadastrar", ([FromBody] Produto produto,
     [FromServices] AppDataContext ctx) =>
 {
-    //Adicionar o objeto dentro da tabela no banco de dados
-    ctx.Produtos.Add(produto);
-    ctx.SaveChanges();
-    return Results.Created("", produto);
+    List<ValidationResult> erros = new List<ValidationResult>();
+    if (!Validator.TryValidateObject(
+        produto, new ValidationContext(produto), erros, true
+    ))
+    {
+        return Results.BadRequest(erros);
+    }
+
+    //Não é permitido o cadastro do produto com algum nome já cadastrado
+    Produto? produtoEncontrado = ctx.Produtos.FirstOrDefault
+        (x => x.Nome == produto.Nome);
+    if (produtoEncontrado is null)
+    {
+        //Adicionar o objeto dentro da tabela no banco de dados
+        ctx.Produtos.Add(produto);
+        ctx.SaveChanges();
+        return Results.Created("", produto);
+    }
+    return Results.BadRequest("Já existe um produto com o mesmo nome");
 });
 
 // DELETE: http://localhost:5124/produto/deletar/id

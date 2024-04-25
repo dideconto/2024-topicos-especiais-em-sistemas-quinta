@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20240418130307_AddQuantidadeTabelaProdutos")]
-    partial class AddQuantidadeTabelaProdutos
+    [Migration("20240425134646_CreateDatabase")]
+    partial class CreateDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,9 +29,11 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
+                        .HasMaxLength(10)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Quantidade")
