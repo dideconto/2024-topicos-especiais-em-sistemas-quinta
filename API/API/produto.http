@@ -5,7 +5,7 @@ GET http://localhost:5124/
 GET http://localhost:5124/produto/listar
 
 ### Busca de Produtos por nome
-GET http://localhost:5124/produto/buscar/Televisão
+GET http://localhost:5124/produto/buscar/c229d875-7268-4cf8-a379-f10faf580caf
 
 ### Cadastro de Produtos
 POST http://localhost:5124/produto/cadastrar
@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 
 ### Remoção de Produtos
-DELETE http://localhost:5124/produto/deletar/802bc8a3-85d4-497a-bb95-0e73fd7cbba9
+DELETE http://localhost:5124/produto/deletar/9cb6d6a1-6633-43fd-bf88-c74846b7ef3d
 
 
 ### Alterar produto
-PUT http://localhost:5124/produto/alterar/3be7d74d-43b7-4087-b7da-48868ccf2559
+PUT http://localhost:5124/produto/alterar/ef52b1eb-549c-4e79-98f4-1a131baffa1e
 Content-Type: application/json
 
 {
     "nome" : "Arroz Alterado",
-    "descricao" : "Alimento",
-    "valor" : 15
+    "descricao" : "Tipo A",
+    "valor" : 8.56
 }
